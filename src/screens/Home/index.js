@@ -17,7 +17,8 @@ export default () => {
 
     const { dispatch: userDispatch } = useContext(UserContext)
     const { state: user } = useContext(UserContext)
-    const [avatar, setAvatar] = useState(null)
+    let avatarUrl = 'https://pisistemas.000webhostapp.com/src/assets/default-avatar.png'
+    const [avatar, setAvatar] = useState(avatarUrl)
     const [pic, setPic] = useState(null)
 
     const navigation = useNavigation()
@@ -68,29 +69,6 @@ export default () => {
 
     const selectPhoto = async () => {
 
-        // if (user.avatar != '') {
-
-        //     let respAsyncStorage = await AsyncStorage.getItem('user')
-        //     let responseAsyncStorage = JSON.parse(respAsyncStorage)
-
-        //     responseAsyncStorage.data.avatar = 'https://pisistemas.000webhostapp.com/src/assets/User_' + user.id + '_avatar.png'
-
-        //     respJSON = JSON.stringify(responseAsyncStorage)
-
-        //     try {
-        //         await AsyncStorage.removeItem('user')
-        //     } catch (e) {
-        //         console.log(e)
-        //     }
-
-        //     try {
-        //         await AsyncStorage.setItem('user', respJSON)
-        //     } catch (e) {
-        //         console.log(e)
-        //     }
-
-        // }
-
         launchImageLibrary(options, (response) => {
 
             if (response.didCancel) {
@@ -101,9 +79,6 @@ export default () => {
             }
 
             else {
-                let source = { uri: response.uri }
-                setAvatar(source)
-
                 let data = response.base64
                 let userId = user.id.toString()
                 setPic(response.base64)
@@ -114,11 +89,47 @@ export default () => {
                 }, [
                     { name: 'image', filename: userId + '_avatar.png', data: data },
                 ]).then((resp) => {
+
                     let responseJson = JSON.parse(resp.data)
-                    let avatarLink = responseJson.avatar
+
+                    console.log(responseJson.avatar)
+                    userDispatch({
+                        type: 'setAvatar',
+                        payload: {
+                            avatar: responseJson.avatar,
+                        }
+                    })
+                    setStorage(responseJson.avatar)
                 })
             }
         })
+
+        const setStorage = async (avatar) => {
+            let json = await AsyncStorage.getItem('user')
+            let responseJson = JSON.parse(json)
+
+            responseJson.data.avatar = avatar
+
+            responseJson = JSON.stringify(responseJson)
+
+            try {
+                await AsyncStorage.removeItem('user')
+            } catch (e) {
+                console.log(e)
+            }
+
+            try {
+                await AsyncStorage.setItem('user', responseJson)
+            } catch (e) {
+                console.log(e)
+            }
+
+            let jsonn = await AsyncStorage.getItem('user')
+            let responseJsonn = JSON.parse(jsonn)
+
+            console.log(responseJsonn)
+
+        }
     }
 
 
@@ -137,12 +148,12 @@ export default () => {
                 </TitleArea>
                 <ImageArea>
 
-                    {
-                        avatar != null ?
-                            <AvatarIcon source={avatar} />
+                    <AvatarIcon source={{
+                        uri: user.avatar ?
+                            user.avatar
                             :
-                            <AvatarIcon source={{ uri: 'https://pisistemas.000webhostapp.com/src/assets/default-avatar.png' }} />
-                    }
+                            'https://pisistemas.000webhostapp.com/src/assets/default-avatar.png',
+                    }} />
 
                     <IconArea>
                         <IconEdit onPress={() => selectPhoto()}>

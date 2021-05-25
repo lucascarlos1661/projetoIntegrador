@@ -24,21 +24,21 @@ export const InputField = styled.View`
     align-items: center;
     margin-bottom: 15px;
     border: 1px solid #BDBDBD; 
-`;
+`
 
 export const Input = styled.TextInput`
     flex: 1;
     font-size: 16px;
     color: #000000;
     margin-left: 10px;
-`;
+`
 
 export const ReadOnlyInput = styled.TextInput`
     flex: 1;
     font-size: 16px;
     color: #A0A0A0;
     margin-left: 10px;
-`;
+`
 
 export const CustomButton = styled.TouchableOpacity`
     height: 45px;
@@ -47,6 +47,7 @@ export const CustomButton = styled.TouchableOpacity`
     border-radius: 100px;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 `
 export const CustomButtonText = styled.Text`
     font-size: 18px;

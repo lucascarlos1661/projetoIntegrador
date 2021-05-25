@@ -129,78 +129,69 @@ export default ({ state }) => {
 
         <Container>
             <ScrollView>
-                    <Label>Matrícula:</Label>
-                    <InputField>
-                        <IconEntypo name='user' size={20} />
-                        <ReadOnlyInput
-                            value={registrationlField}
-                            onChangeText={t => setRegistrationField(t)}
-                            maxLength={9}
-                            editable={false}
-                        />
-                    </InputField>
+                <Label>Matrícula:</Label>
+                <InputField>
+                    <IconEntypo name='user' size={20} />
+                    <ReadOnlyInput
+                        value={registrationlField}
+                        onChangeText={t => setRegistrationField(t)}
+                        maxLength={9}
+                        editable={false}
+                    />
+                </InputField>
 
-                    <Label>CPF:</Label>
-                    <InputField>
-                        <IconEntypo name='key' size={20} />
-                        <ReadOnlyInput
-                            value={cpfField}
-                            onChangeText={maskCPF}
-                            maxLength={14}
-                            keyboardType="number-pad"
-                            editable={false}
-                        />
-                    </InputField>
+                <Label>CPF:</Label>
+                <InputField>
+                    <IconEntypo name='key' size={20} />
+                    <ReadOnlyInput
+                        value={cpfField}
+                        onChangeText={maskCPF}
+                        maxLength={14}
+                        keyboardType="number-pad"
+                        editable={false}
+                    />
+                </InputField>
 
-                    <Label>Nome:</Label>
-                    <InputField>
-                        <IconEntypo name='documents' size={20} />
-                        <ReadOnlyInput
-                            value={nameField}
-                            onChangeText={t => setNameField(t)}
-                            editable={false}
-                        />
-                    </InputField>
-                    <Label>Telefone:</Label>
-                    <InputField>
-                        <IconEntypo name='phone' size={20} />
-                        <Input
-                            value={phoneField}
-                            maxLength={14}
-                            onChangeText={maskPhone}
-                            keyboardType="phone-pad"
-                        />
-                    </InputField>
+                <Label>Nome:</Label>
+                <InputField>
+                    <IconEntypo name='documents' size={20} />
+                    <ReadOnlyInput
+                        value={nameField}
+                        onChangeText={t => setNameField(t)}
+                        editable={false}
+                    />
+                </InputField>
+                <Label>Telefone:</Label>
+                <InputField>
+                    <IconEntypo name='phone' size={20} />
+                    <Input
+                        value={phoneField}
+                        maxLength={14}
+                        onChangeText={maskPhone}
+                        keyboardType="phone-pad"
+                    />
+                </InputField>
 
-                    <Label>Email:</Label>
-                    <InputField>
-                        <IconEntypo name='mail' size={20} />
-                        <Input
-                            keyboardType="email-address"
-                            value={emailField}
-                            onChangeText={t => setEmailField(t)}
-                        />
-                    </InputField>
+                <Label>Email:</Label>
+                <InputField>
+                    <IconEntypo name='mail' size={20} />
+                    <Input
+                        keyboardType="email-address"
+                        value={emailField}
+                        onChangeText={t => setEmailField(t)}
+                    />
+                </InputField>
 
-                    <Label>Link foto de perfil:</Label>
-                    <InputField>
-                        <IconEntypo name='camera' size={20} />
-                        <Input
-                            value={avatarField}
-                            onChangeText={t => setAvatarField(t)}
-                        />
-                    </InputField>
+                {isLoading &&
+                    <LoadingIcon size='large' color='#5DB075' />
+                }
 
-                    {isLoading &&
-                        <LoadingIcon size='large' color='#5DB075' />
-                    }
+                {!isLoading &&
 
-                    {!isLoading &&
-
-                        <CustomButton onPress={handleChangeCLick}>
-                            <CustomButtonText>SALVAR</CustomButtonText>
-                        </CustomButton>
-                    }
+                    <CustomButton onPress={handleChangeCLick}>
+                        <CustomButtonText>SALVAR</CustomButtonText>
+                    </CustomButton>
+                }
             </ScrollView>
         </Container>
     )
