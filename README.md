@@ -2,5 +2,4 @@
 
 
 
-https://user-images.githubusercontent.com/59378841/129489306-43e519fd-79e2-4a65-be52-608fed618f0e.mp4
-
+![app](https://user-images.githubusercontent.com/59378841/129489411-7dfc4cd8-5f8a-47ee-995c-829d93cc149d.gif)
