@@ -1,31 +1,25 @@
 ![app](https://user-images.githubusercontent.com/59378841/129489411-7dfc4cd8-5f8a-47ee-995c-829d93cc149d.gif)
 
 ## 💻 Projeto
+Aplicativo para controle de sintomas referentes a COVID-19 dentro do ambiente corporativo. Nele o usuário pode preencher um formulário relacionado a sintomas de saúde, ao fim o aplicativo irá apurar o que foi preenchido e informar se ele está com suspeita ou não de COVID-19. Esse projeto foi desenvolvido durante o curso de sistemas de informação como projeto integrador e foi o primeiro app desenvolvido por mim.
 
-Aplicativo desenvolvido para consulta de tempo. O usuário digita um CEP, é feita a validação se esse CEP é válido, caso seja o app armazena esse local na memória e através de uma segunda API é feita a consulta da temperatura no local informado.
 ## ✨ Tecnologias
- - React Native
- - Consumos de APIS com axios
- - Flat List
- - Assync Storage
- - Uso de fontes personalisadas
-## :hammer_and_wrench: APIs
-Para o funcionamento do app, é necessário o consumo de duas APIs.
 
-A primeira para consulta do CEP digitado pelo usuário, documentação disponível em: 
+-   [ ] React Native
+-   [ ] Java Script
+-   [ ] Uso de Hooks - useContext
+-   [ ] Consumo de API
+-   [ ] Styled Components
 
-*https://viacep.com.br/*
-
-E a segunda para consulta do clima no CEP informado, documentação disponível em:
-*https://hgbrasil.com/status/weather*
+## :hammer_and_wrench: Back-end
+Para o backend do projeto desenvolvi uma API em PHP com banco de dados MySQL que foi hospedada em um host gratuito.
 
 ## Executando o projeto
-
-Para instalar o projeto é necessário utilizar o comando:
+Para executar o projeto use o comando:
 ```
 yarn install
 ```
-Para executar o projeto é necessário usar o comando:
+Em seguida:
 ```
 npx react-native run-android
 ```
